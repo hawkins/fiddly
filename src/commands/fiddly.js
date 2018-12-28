@@ -125,6 +125,12 @@ module.exports = {
         : ''
       const dark = options.darkTheme ? 'dark' : ''
 
+      if (options === undefined || description === undefined) {
+        return error(
+          `Cannot determine project name or description - did you forget to create a .fiddly.config.json file?`
+        )
+      }
+
       const images = (
         markdown.match(/(?:!\[(.*?)\]\((?!http)(.*?)\))/gim) || []
       )
